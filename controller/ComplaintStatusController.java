@@ -13,8 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import view.ComplaintStatusView;
-import view.SearchComplaintView;
+import view.ComplaintsView;
 
 
 @WebServlet("/ComplaintStatus")
@@ -31,8 +30,8 @@ public class ComplaintStatusController extends HttpServlet {
 		HttpSession session = request.getSession();
 		long conid = Long.parseLong(request.getAttribute("consumer_lgid").toString());
 		try {
-			int compid = ComplaintStatusView.fetchComplaintId(conid);
-			List<HashMap<String, String>> l1 = ComplaintStatusView.fetchAllComplaints(compid);
+			int compid = ComplaintsView.fetchComplaintId(conid);
+			List<HashMap<String, String>> l1 = ComplaintsView.fetchAllComplaints(compid);
 			if(session.getAttribute("view_all_comp") == null)
 			{
 				session.setAttribute("view_all_comp", l1);
